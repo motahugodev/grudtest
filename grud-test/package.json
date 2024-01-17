@@ -1,0 +1,24 @@
+{
+  "name": "grud-test",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vee-validate/i18n": "^4.6.6",
+    "@vee-validate/rules": "^4.6.6",
+    "maska": "^2.1.11",
+    "sass": "^1.69.7",
+    "vee-validate": "^4.12.4",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.10"
+  }
+}
