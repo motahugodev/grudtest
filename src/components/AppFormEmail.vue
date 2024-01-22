@@ -42,8 +42,6 @@ const options = ref([
 const form = ref(props.modelValue);
 
 const next = (value) => {
-  console.log("🚀 ~ next ~ value:", value);
-  console.log(form.value);
   emit("next", form.value);
 };
 </script>

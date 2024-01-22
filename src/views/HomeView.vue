@@ -30,7 +30,11 @@ const steps = shallowRef([
 ]);
 
 const next = (value) => {
+  console.log("🚀 ~ next ~ value:", value);
+
   const newStep = step.value;
+  console.log("🚀 ~ next ~ newStep:", newStep);
+
   switch (newStep) {
     case 0:
       steps.value[0].value = value;
@@ -59,23 +63,38 @@ const next = (value) => {
       break;
 
     case 2:
-      steps.value[2].value = value;
       step.value = 3;
+      steps.value[2].value = value;
 
-      break;
-
-    case 3:
       const concat_value = Object.assign(
         steps.value[0].value,
-        steps.value[1].value
+        steps.value[1].value,
+        steps.value[2].value
       );
 
       steps.value[3].value = concat_value;
-
       break;
+
+    case 3:
+      requestSave(steps.value[3].value);
+      break;
+
     default:
       break;
   }
+};
+
+const requestSave = (body) => {
+  const options = {
+    method: "POST",
+    body: Object.keys(body)
+      .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(body[k])}`)
+      .join("&"),
+  };
+  fetch("api/registration", options)
+    .then((response) => response.text())
+    .then((texto) => console.log(texto))
+    .catch((err) => console.log(err.message));
 };
 const back = () => {
   step.value = step.value - 1;
